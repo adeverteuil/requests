@@ -22,6 +22,7 @@ from .utils import to_key_val_list, default_headers, to_native_string
 from .exceptions import (
     TooManyRedirects, InvalidSchema, ChunkedEncodingError, ContentDecodingError)
 from .packages.urllib3._collections import RecentlyUsedContainer
+from .packages.urllib3.util import Timeout as TimeoutSauce
 from .structures import CaseInsensitiveDict
 
 from .adapters import HTTPAdapter
@@ -402,7 +403,7 @@ class Session(SessionRedirectMixin):
         cookies=None,
         files=None,
         auth=None,
-        timeout=None,
+        timeout=TimeoutSauce.DEFAULT_TIMEOUT,
         allow_redirects=True,
         proxies=None,
         hooks=None,
